@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="includes/header :: header" />
+<body>
+  <div class="container">
+    <nav th:replace="includes/navbar :: navbar-default"></nav>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-md-offset-3">
+        <h1>Pfizer: Patient Home</h1>
+      </div>
+      <form action="#" th:action="@{/patient}" th:object="${patient}" method="post">
+      <p>Id: <input type="text" th:field="*{patient_id}" /></p>
+        <p>FirstName: <input type="text" th:field="*{first_name}" /></p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+    </div>
+  </div>
+  <div th:replace="includes/body-scripts :: body-scripts"></div>
+</body>
+</html>
