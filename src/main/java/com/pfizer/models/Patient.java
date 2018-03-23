@@ -28,8 +28,8 @@ public class Patient {
 	private String first_name;
 	private String last_name;
 	private String city;
-	private String Country;
-	private long phoneNo;
+	private String country;
+	private long phone_no;
 	
 	@CreatedDate
 	private LocalDate dob;
