@@ -1,6 +1,7 @@
 package com.pfizer.models;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -8,8 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-import org.springframework.data.annotation.CreatedDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,10 +29,13 @@ public class Patient {
 	private String city;
 	private String country;
 	private long phone_no;
-	
-	@CreatedDate
 	private LocalDate dob;
 	
 	@OneToMany(mappedBy = "patient")
 	private Set<Payment> payments;
+	
+	public void setDob(String dob) {
+		this.dob = LocalDate.parse(dob, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+	}
+	
 }
