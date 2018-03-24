@@ -14,18 +14,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public static final String PASSWORD = "vishal";
 	
 	private static final String[] PUBLIC_MATCHERS = {
-		"/", "/index", "/webjars/**" 	
+		"/", "/index", "/webjars/**", "/css/**" 	
 	};
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http
-			.authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll()
-			.anyRequest().authenticated().and()
+			.authorizeRequests()
+			.antMatchers(PUBLIC_MATCHERS).permitAll()
+			.anyRequest().authenticated()
+			.and()
 			.formLogin().loginPage("/login").defaultSuccessUrl("/patient")
 			.failureUrl("/login?error").permitAll()
-			.and().logout().permitAll();
+			.and()
+			.logout().permitAll();
 	}
 	
 	@Autowired
