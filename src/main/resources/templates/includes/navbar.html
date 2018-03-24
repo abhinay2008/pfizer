@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -27,13 +27,23 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
+                    <a class="nav-link" href="#">Disabled</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <a th:href="@{/login}"><button type="button" class="btn btn-outline-success">Login</button></a>
-                <a th:href="@{/signup}"><button type="button" class="btn btn-outline-primary">SignUp</button></a>
-            </form>
+            <ul class="navbar-nav">
+                <li th:if="${#authorization.expression('!isAuthenticated()')}" class="nav-item">
+                  <a th:href="@{/login}" class="login-btn btn btn-outline-success">Login</a>
+                </li>
+                <li th:if="${#authorization.expression('!isAuthenticated()')}" class="nav-item">
+                  <a th:href="@{/signup}" class="btn btn-outline-primary">Signup</a>
+                </li>
+                <li th:if="${#authorization.expression('isAuthenticated()')}" class="nav-item">
+                  <a th:href="@{/info}" class="login-btn btn btn-outline-primary">Know More</a>
+                </li>
+                <li th:if="${#authorization.expression('isAuthenticated()')}" class="nav-item">
+                  <a th:href="@{/logout}" class="btn btn-outline-danger">Logout</a>
+                </li>
+            </ul>
         </div>
     </nav>
 </body>
