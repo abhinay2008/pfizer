@@ -20,7 +20,6 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long payment_no;
-	
 	private String details;
 	private String method;
 	
