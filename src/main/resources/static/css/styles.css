@@ -1,3 +1,16 @@
 .login-btn {
 	margin-right: 5px;
 }
+
+.bg-footer {
+	background-color: #EAEAEA;
+}
+
+.footer .copyright {
+	font-family: monospace;
+	font-size: 12px;
+}
+
+footer .row {
+	font-size: 12px;
+}
