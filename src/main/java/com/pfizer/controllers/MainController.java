@@ -16,14 +16,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.pfizer.models.Appointment;
 import com.pfizer.models.Patient;
+import com.pfizer.models.Payment;
+import com.pfizer.repositories.AppointmentRepository;
 import com.pfizer.repositories.PatientRepository;
+import com.pfizer.repositories.PaymentRepository;
 
 @Controller
 public class MainController {
 	
 	@Autowired
 	PatientRepository patientRepository;
+	
+	@Autowired
+	PaymentRepository paymentRepository;
+	
+	@Autowired
+	AppointmentRepository appointmentRepository;
+	
+	
 	
 	@GetMapping("/")
 	public String homePage() {
@@ -92,21 +104,21 @@ public class MainController {
 		return "patient/signup";
 	}
 	
-//	@GetMapping("/patients")
-//	public String getAllPatients(@ModelAttribute("sample") Sample sample, Model model) {	
-//
-//		List<Sample> samples = (List<Sample>) sampleRepository.findAll();
-//		model.addAttribute("samples", samples);
-//		return "simple";
-//	}
-//	
-//	@PostMapping("/patients")
-//	public ResponseEntity<Sample> saveNewPatient(@ModelAttribute("sample") Sample sample, Model model) {
-//		System.out.println(sample.getId()+"***********" +sample.getName());
-//		sampleRepository.save(sample);
-////		ModelAndView mv = new ModelAndView("simple");
-//		
-//		return new ResponseEntity<>(new Sample(sample.getId(), sample.getName(), sample.getPrice()), HttpStatus.OK);
-//	}
+	@GetMapping("/payments")
+	public String getPaymentsPage(Model model) {
+		
+		List<Payment> payments = (ArrayList<Payment>) paymentRepository.findAll();
+		model.addAttribute("payments", payments);
+		
+		return "patient/payments";
+	}
 	
+	@GetMapping("/appointments")
+	public String getAppointmentsPage(Model model) {
+		
+		List<Appointment> appointments = (ArrayList<Appointment>) appointmentRepository.findAll();
+		model.addAttribute("appointments", appointments);
+		
+		return "patient/appointments";
+	}
 }
