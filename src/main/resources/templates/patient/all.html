@@ -3,12 +3,11 @@
 <head th:replace="includes/header :: header" />
 <body>
   <div class="container">
-    <nav th:replace="includes/patientnav :: navbar-patient"></nav>
+    <nav th:replace="includes/navbar :: navbar-default"></nav>
     <div class="row justify-content-center">
       <div class="col-md-6 col-md-offset-3">
-        <h1>Pfizer: Patient Home</h1>
-      </div>
-      <table class="table">
+        <h1>All Patients</h1>
+        <table class="table">
         <thead class="thead-dark">
           <tr>
             <th scope="col">Patient #</th>
@@ -18,16 +17,17 @@
           </tr>
         </thead>
         <tbody>
-			    <tr th:each="patient : ${patients}">
-			        <th scope="row" th:text="${patient.patient_id}"></th>
-			        <td th:text="${patient.first_name}"></td>
-			        <td th:text="${patient.last_name}"></td>
-			        <td th:text="${patient.phone_no}"></td>
-			    </tr>
-			  </tbody>
-		  </table>
+          <tr th:each="patient : ${patients}">
+              <th scope="row" th:text="${patient.patient_id}"></th>
+              <td th:text="${patient.first_name}"></td>
+              <td th:text="${patient.last_name}"></td>
+              <td th:text="${patient.phone_no}"></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
     </div>
   </div>
-  <div th:replace="includes/body-scripts :: body-scripts"></div>
+  <div th:replace="includes/footer :: footer-default"></div>
 </body>
 </html>
