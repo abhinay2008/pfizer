@@ -2,6 +2,7 @@ package com.pfizer.models;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -33,6 +34,9 @@ public class Patient {
 	
 	@OneToMany(mappedBy = "patient")
 	private Set<Payment> payments;
+	
+	@OneToMany(mappedBy = "patient")
+	private List<Appointment> appointments;
 	
 	public void setDob(String dob) {
 		this.dob = LocalDate.parse(dob, DateTimeFormatter.ofPattern("MM/dd/yyyy"));
